@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #36dfa6;
+}
+header{
+    text-align: center;
+    color: #ffffff;
+}
+section{
+    margin: auto;
+    color: black;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.3);
+    padding: 5em;
+    border-radius: 10px;
+    width: 400px;
+}
+section .card{
+    text-align: center;
+    transition: 0.1s;
+}
+section .card button{
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    padding: 1em;
+}
+section .card button:nth-child(1){
+    background-color: #ff0000;
+}
+section .card button:nth-child(2){
+    background-color: #00eb4e;
+}
+section .card button:nth-child(3){
+    background-color: #0059ff;
+}
+footer{
+    text-align: center;
+    font-style: italic;
+    color: aliceblue;
+}
+section .card button:hover{
+    filter: hue-rotate(-25deg);
+}
