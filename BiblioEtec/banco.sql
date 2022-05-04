@@ -44,4 +44,6 @@ genero char(90) not null
 ) Engine = InnoDB;
 
 
+ALTER TABLE alunosreg MODIFY rm char(12);
+
 DELETE FROM `alunosreg` WHERE `alunosreg`.`idAluno` = 1

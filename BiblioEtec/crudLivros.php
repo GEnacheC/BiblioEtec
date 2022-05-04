@@ -33,11 +33,11 @@
     }
     if($act == 's'){
         
-        $sql = "select * from livrosreg where name like '$search%' or cod = '$search' or autor like '$search%'  or genero like '$search%' or estante = '$search'";
-        $res = $con->query($sql); 
+        // $sql = "select * from livrosreg where name like '%$search%' or cod = '$search' or autor like '$search%'  or genero like '$search%' or estante = '$search'";
+        // $res = $con->query($sql); 
         
-        $_SESSION["NomeLivro"] =  $res->fetch_assoc()['name']; 
-        $_SESSION["Cod"] =  $res->fetch_assoc()['cod']; 
+        $_SESSION["NomeLivro"] = $search; //$res->fetch_assoc()['name']; 
+        $_SESSION["Cod"] =  $search;//$res->fetch_assoc()['cod']; 
         $_SESSION["SearchLi"] = True;
         
         header("location: ".$_SERVER['HTTP_REFERER']);

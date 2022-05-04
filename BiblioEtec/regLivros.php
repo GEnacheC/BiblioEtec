@@ -73,7 +73,7 @@
                      <option value="Literatura russa">Literatura russa</option>
                      <option value="Literatura chinesa">Literatura chinesa</option>
                      <option value="Literatura japonesa">Literatura japonesa</option>
-                     <option value="Artes, entretenimento e esportes">Literatura japonesa</option>
+                     <option value="Artes, entretenimento e esportes">Artes, entretenimento e esportes</option>
                      <option value="Poesia">Poesia</option>
                      <option value="Teatro">Teatro</option>
                      <option value="Crônicas">Crônicas</option>
@@ -82,6 +82,26 @@
                      <option value="Cds">Cds</option>
                      <option value="TCCs">TCCs</option>
                      <option value="Livros didáticos">Livros didáticos</option>
+                     <option value="Apostilas">Apostilas</option>
+                     <option value="Estatística">Estatística</option>
+                     <option value="Biografia">Biografia</option>
+                     <option value="Artes">Artes</option>
+                     <option value="Marketing">Marketing</option>
+                     <option value="Automação">Automação</option>
+                     <option value="Gramática">Gramática</option>
+                     <option value="Português">Português</option>
+                     <option value="Contos">Contos</option>
+                     <option value="Eletrônica">Eletrônica</option>
+                     <option value="Contabilidade">Contabilidade</option>
+                     <option value="Ética">Ética</option>
+                     <option value="Sociologia">Sociologia</option>
+                     <option value="Economia">Economia</option>
+                     <option value="Direito">Direito</option>
+                     <option value="Pedagogia">Pedagogia</option>
+                     <option value="Enciclopédia">Enciclopédia</option>
+                     <option value="Informática">Informática</option>
+                     <option value="Comunicação">Comunicação</option>
+        
                 </select>
 
                 <button onclick="submitForm('c');" class="downButton">Registrar</button><br>
@@ -146,13 +166,22 @@ $con = new mysqli("127.0.0.1:3306", "root", "", "biblioteca");
 if($_SESSION["SearchLi"] == True){
     
     $cod = $_SESSION["Cod"];
-    $nomeLivro = $_SESSION["NomeLivro"];
-    $sql = "select * from livrosreg where cod = '$cod' or name like '$nomeLivro'"; 
+    $search = $_SESSION["NomeLivro"];
+    $sql = "select * from livrosreg where cod = '$search' or name like '%$search%' or autor like '%$search%'  or genero like '$search%' or estante = '$search'"; 
     $res = $con->query($sql); 
+    if(mysqli_num_rows($res) < 1){
+        //echo("<p style='color:rgb(0, 192, 0)'>errou</p>");
+        $_SESSION["Cod"] = "";
+        $_SESSION["NomeLivro"] = "";
+    }
+    //echo("<p style='color:rgb(0, 192, 0)'>$nomeLivro</p>");
     echo("<div class='tableCard'>");
     echo("<table>"); 
-    echo("<tr><th>Cód. Livro</th><th>Nome do livro</th><th>Autor</th><th>Estante</th><th>Gênero</th><th>Status</th></tr>"); 
+    echo("<tr><th>Cód. Livros</th><th>Nome do livro</th><th>Autor</th><th>Estante</th><th>Gênero</th><th>Status</th></tr>"); 
+   
     while($campo = $res->fetch_assoc()){
+       
+        
         echo(mysqli_error($con));
         echo("<tr>");
         echo("<td>".$campo["cod"]."</td>"); 
@@ -183,7 +212,10 @@ else{
         echo("<div class='tableCard'>");
         echo("<table>"); 
         echo("<tr><th>Cód. Livros</th><th>Nome do livro</th><th>Autor</th><th>Estante</th><th>Gênero</th><th>Status</th></tr>"); 
-        while($campo = $res->fetch_assoc()){ 
+        while($campo = $res->fetch_assoc()){
+        // $count = 1;
+        // while($count < 8){
+        //     $count += 1;
             echo("<tr>");
             echo("<td>".$campo["cod"]."</td>"); 
             echo("<td>".$campo["name"]."</td>"); 

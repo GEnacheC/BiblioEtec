@@ -74,7 +74,7 @@
                 <br>
                 <br>
                 <input name="returnRm" placeholder="Digite o RM do aluno" required="required"
-                maxlength = '5'
+
                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
                 <button class="purple downButton">Devolver</button>
                 
@@ -134,7 +134,7 @@ if($_SESSION["SearchL"] == True){
 
     $nameLivro = $_SESSION["NomeLivro"];
     
-    $sql = "select * from livrosempre where nameLivro = '$nameLivro' "; 
+    $sql = "select * from livrosempre where nameLivro like '%$nameLivro%' "; 
     $res = $con->query($sql); 
     echo("<div class='tableCard'>");
     echo("<table>"); 

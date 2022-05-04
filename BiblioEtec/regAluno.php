@@ -105,8 +105,14 @@ if($_SESSION["Search"] == True){
     $rm = $_SESSION["Rm"];
     $nameAluno = $_SESSION["Nome"];
     
-    $sql = "select * from alunosreg where name like '$nameAluno' or rm = '$rm' "; 
+        
+    $sql = "select * from alunosreg where name like '%$nameAluno%' or rm = '$rm' "; 
     $res = $con->query($sql); 
+    // if(mysqli_num_rows($res) < 1){
+    //     //echo("<p style='color:rgb(0, 192, 0)'>errou</p>");
+    //     $_SESSION["Rm"] = "";
+    //     $_SESSION["Nome"] = "";
+    // }
     echo("<div class='tableCard'>");
     echo("<table>"); 
     echo("<tr><th>RM</th><th>Nome</th><th>Série</th><th>Curso</th><th>Email</th><th>Telefone</th></tr>"); 

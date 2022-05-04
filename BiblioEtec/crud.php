@@ -32,11 +32,11 @@
     }
     if($act == 's'){
         
-        $sql = "select * from alunosreg where name like '$search%' or rm = '$search' ";
-        $res = $con->query($sql); 
+        //$sql = "select * from alunosreg where name like '$search%' or rm = '$search' ";
+        //$res = $con->query($sql); 
         
-        $_SESSION["Nome"] =  $res->fetch_assoc()['name']; 
-        $_SESSION["Rm"] =  $res->fetch_assoc()['rm']; 
+        $_SESSION["Nome"] =  $search; 
+        $_SESSION["Rm"] =  $search; 
         $_SESSION["Search"] = True;
         
         header("location: ".$_SERVER['HTTP_REFERER']);

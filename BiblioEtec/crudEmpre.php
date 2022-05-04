@@ -106,10 +106,10 @@
 }
     if($act == 's'){
         
-        $sql = "select * from livrosempre where nameLivro like '$search%' ";
-        $res = $con->query($sql); 
+        // $sql = "select * from livrosempre where nameLivro like '$search%' ";
+        // $res = $con->query($sql); 
         
-        $_SESSION["NomeLivro"] =  $res->fetch_assoc()['nameLivro']; 
+        $_SESSION["NomeLivro"] =  $search; 
 
         $_SESSION["SearchL"] = True;
         
