@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empréstimo de livros</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
@@ -85,6 +85,27 @@
     </section>
 
 
+    <section id="formRenew" class="formRenew">
+        
+        <div class="card">
+            <button onclick="closeForm()" class="reds close">X</button>
+            <form id="formRegAluno" method="post" action="crudEmpre.php">
+                
+                <h1 style="color:#000">Renovar Empréstimo</h1>
+              
+                <br>
+                <label style="color:#000">Data de devolução:</label>
+                <input type="date" name="dateRenew" id="" required="required" />
+                
+                <button class="purple downButton">Devolver</button>
+                
+                <input type="text" name="Act" value="rw" id="Act" style="display:none" /><br>
+                <input type="text" id="bookNameRenew" value="" name="bookNameRenew" style="display: none"/>
+            </form>
+        </div>
+        
+    </section>
+
     <header>
         
         
@@ -106,7 +127,9 @@
                 <input type="text" name="Act" value="s" id="ActS" style="display:none" /><br>
     </form>
 </body>
-<script src="scripts.js"></script>
+
+
+<script src="script.js"></script>
 
 <script>
 const submitForm = (typeSubmit) =>{ 
@@ -115,8 +138,10 @@ const submitForm = (typeSubmit) =>{
 const submitFormS = (typeSubmit) =>{ 
         document.getElementById('ActS').value = typeSubmit; 
 }
-const as = () =>{ 
-
+const callFormRenew = (whatBook) =>{ 
+        document.getElementById('formRenew').style.display = "block";
+        document.getElementById('bookNameRenew').value = whatBook;
+        alert( document.getElementById('bookNameRenew').value)
 }
 </script>
 
@@ -202,6 +227,7 @@ if(mysqli_num_rows($res) > 0){
         echo("<td>".$campo["nameLivro"]."</td>");
         echo("<td>".$campo["dateEmpre"]."</td>"); 
         echo("<td>".$campo["dateDev"]."</td>"); 
+       
         if($intervalDays < 0){
             echo("<td style='color:#ff4444'>".$intervalDays."</td>"); 
         }
@@ -217,6 +243,7 @@ if(mysqli_num_rows($res) > 0){
         else{
             echo("<td style='color:red'>".$campo["status"]."</td>");
         }
+        echo("<td> <button onclick='callFormRenew(this.id)' class='btn blue' id='".$campo["nameLivro"]." '>Renovar</button></td>"); 
         
         echo("</tr>");
     }

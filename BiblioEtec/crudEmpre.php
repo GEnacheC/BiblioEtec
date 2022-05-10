@@ -115,8 +115,25 @@
         
         header("location: ".$_SERVER['HTTP_REFERER']);
     }
+    if($act == 'rw'){
+        $renewName = $_POST["bookNameRenew"];
+        $renewDate = $_POST["dateRenew"];
+        echo($renewDate.' ');
+        echo($renewName);
+        
+
+        
+        $sql = "update livrosempre SET dateDev = '$renewDate' WHERE nameLivro = '$renewName'"; 
+        $res = $con->query($sql); 
+       
+        echo(mysqli_error($con));
+        header("location: ".$_SERVER['HTTP_REFERER']);
+        
+}
     else{
     $_SESSION["SearchL"] = False;
     header("location: ".$_SERVER['HTTP_REFERER']);
     }
+
+  
 ?>
