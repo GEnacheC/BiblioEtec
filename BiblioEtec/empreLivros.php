@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empréstimo de livros</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
@@ -97,7 +97,7 @@
                 <label style="color:#000">Data de devolução:</label>
                 <input type="date" name="dateRenew" id="" required="required" />
                 
-                <button class="purple downButton">Devolver</button>
+                <button class="purple downButton">Renovar</button>
                 
                 <input type="text" name="Act" value="rw" id="Act" style="display:none" /><br>
                 <input type="text" id="bookNameRenew" value="" name="bookNameRenew" style="display: none"/>
@@ -141,7 +141,7 @@ const submitFormS = (typeSubmit) =>{
 const callFormRenew = (whatBook) =>{ 
         document.getElementById('formRenew').style.display = "block";
         document.getElementById('bookNameRenew').value = whatBook;
-        alert( document.getElementById('bookNameRenew').value)
+   
 }
 </script>
 
