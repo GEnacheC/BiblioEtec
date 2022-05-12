@@ -6,23 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Livro</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?<?=filemtime("style.css")?>">
 </head>
 <body>
-    <section class="formAdd">
+    <section class="formLayout">
         
         <div class="card">
             <button onclick="closeForm()" class="reds close">X</button>
-            <form id="formRegAluno" method="post" action="crudLivros.php">
-                <h1 style="color:#000">Registrar livro</h1>
+            <form  method="post" action="crudLivros.php">
+                <h1 >Registrar livro</h1>
 
-                <label style="color:#000">Cód. Livro:</label><br><input  name="cod" required="required"  /><br>
+                <label >Cód. Livro:</label><br><input  name="cod" required="required"  /><br>
 
-                <label style="color:#000">Nome:</label><input name="nomeLivro" required="required"><br>
+                <label >Nome:</label><input name="nomeLivro" required="required"><br>
 
-                <label style="color:#000">Autor:</label><input name="autor" required="required"><br>
+                <label >Autor:</label><input name="autor" required="required"><br>
                 
-                <label style="color:#000">Estante:</label>
+                <label >Estante:</label>
                 <select name="estante">
                      <option value="01">01</option>
                      <option value="02">02</option>
@@ -35,7 +35,7 @@
                      <option value="09">09</option>
                 </select><br>
 
-                <label style="color:#000">Gênero:</label><br>
+                <label >Gênero:</label><br>
                 <select name="genero">
                      <option value="Obras gerais de referência">Obras gerais de referência</option>
                      <option value="Dicionários">Dicionários</option>
@@ -112,13 +112,13 @@
         
     </section>
 
-    <section class="formDelete">
+    <section class="formLayout">
         
         <div class="card">
             <button onclick="closeForm()" class="reds close">X</button>
-            <form id="formRegAluno" method="post" action="crudLivros.php">
+            <form  method="post" action="crudLivros.php">
                 
-                <h1 style="color:#000">Apagar registro</h1>
+                <h1 >Apagar registro</h1>
                 <input name="deleteByName" placeholder="Digite um nome" required="required">
                 <button onclick="submitForm('d');" class="reds downButton">Deletar</button>
                 
@@ -131,12 +131,12 @@
 
    
     <header>
-        <a href="index.php" class="btn-link green btn-home"><</a>
+        <a href="index.php" class="btn-link btn btn-home"><</a>
         <h1>Livros registrados</h1>
-        <button onclick="addAluno()">Cadastrar livro</button>
-        <button onclick="deleteAluno()" class="reds">Apagar registro</button>
+        <button onclick="addAluno()" class="btn">Cadastrar livro</button>
+        <button onclick="deleteAluno()" class="btn">Apagar registro</button>
     </header> 
-    <form id="formRegAluno" method="post" action="crudLivros.php">
+    <form  method="post" action="crudLivros.php" class="formSearch">
                 
                 
                 <label>Pesquisar:</label><input name="search" class="inpt" placeholder="Digite um nome ou código" />
@@ -146,7 +146,7 @@
     </form>
    
 </body>
-<script src="scripts.js"></script>
+<script src="script.js?<?=filemtime("script.js")?>"></script>
 
 <script>
 const submitForm = (typeSubmit) =>{ 
@@ -177,6 +177,8 @@ if($_SESSION["SearchLi"] == True){
     //echo("<p style='color:rgb(0, 192, 0)'>$nomeLivro</p>");
     echo("<div class='tableCard'>");
     echo("<table>"); 
+    echo("<h1 style='color:rgb(0, 192, 0)'>Resultados encontrados</h1>");
+    echo("<br>");
     echo("<tr><th>Cód. Livros</th><th>Nome do livro</th><th>Autor</th><th>Estante</th><th>Gênero</th><th>Status</th></tr>"); 
    
     while($campo = $res->fetch_assoc()){

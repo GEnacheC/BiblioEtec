@@ -7,20 +7,17 @@
 body{
     font-family: 'Open Sans', sans-serif; 
     background-color: #010101;
-    color: rgb(227, 227, 227);
+    /* color: rgb(227, 227, 227); */
 }
 header{
     text-align: center;
+    color: rgb(227, 227, 227);
+    margin-bottom: 2em;
 }
-header button{
-    border: none;
-    background-color: rgb(0, 223, 0);
-    color: #fff;
-    border-radius: 10px;
-    padding: 1em;
-    cursor: pointer;
-    margin: auto;
+header .btn{
+    margin-top: 1em;
 }
+
 .close{
     margin-left: 100%;
     margin-top: 0;
@@ -69,9 +66,10 @@ section input{
     outline: 0;
 }
 section .card{
-    background-color: #fff;
+    background-color: rgb(37, 37, 37);
     margin: auto;
-    margin-top: 0em;;
+    color: #fff;
+    margin-top: 7em;
     border-radius: 10px;
     width: 200px;
     font-size: 0.8em;
@@ -101,14 +99,15 @@ footer{
 }
 
 .tableCard{
-    background-color: #5a5a5a;
+    background-color: rgb(27, 27, 27);
     margin: auto;
     border-radius: 10px;
-    width: 1230px;
+    width: 90%;
     font-size: 0.8em;
     padding: 5em;
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0,0.3);
     margin-top: 2em;
+    color: rgb(227, 227, 227);
 }
 
 table{
@@ -124,40 +123,25 @@ th{
     padding: 1em;
 }
 td{
-    padding: 2em;
-}
-.formEmp{
-    text-align: center;
-    background: rgba(255, 255, 255, 0.619);
-    position: absolute;
-    width: 100%;
-    height: 2000px;
-    display: none;
-}
-.formDeleteEmp{
-    text-align: center;
-    background: rgba(255, 255, 255, 0.619);
-    position: absolute;
-    width: 100%;
-    height: 2000px;
-    display: none;
+    padding: 0.5em;
 }
 
-.formRenew{
+
+.formLayout{
     text-align: center;
-    background: rgba(255, 255, 255, 0.619);
+    background: rgba(80, 79, 79, 0.619); 
     position: absolute;
     width: 100%;
-    height: 2000px;
+    height: 100000px;
     display: none;
+    
 }
-.formEmp .card{
-    text-align: center;
+.formLayout .btn{
+    margin-top: 2em;
 }
 .menu .card{
     text-align: center;
     width: 500px;
-    background-color: #5a5a5a;
 }
 .menu .card{
     display: grid;
@@ -166,7 +150,7 @@ td{
 }
 .btn-link{
     border: 2px solid transparent;
-    border-radius: 10px;
+    border-radius: 5px;
     color: #fff;
     padding: 0.5em 0.5em;
     text-align: center;
@@ -181,15 +165,24 @@ td{
     margin-top: 1em;
 }
 .btn{
-    padding: 1em;
-    border: none;
+    padding: 0.5em;
+    border: 0.5px #fff solid;
+    background-color: transparent;
     color: #fff;
-    border-radius: 10px;
-    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: 0.2s;
 }
+.btn:hover{
+    background-color: #fff;
+    color: #000;
+}
+
 .inpt{
     outline: 0;
+}
+.formSearch{
+    margin-left: 1em;
 }
 .formSearch label{
     color: rgb(227, 227, 227);

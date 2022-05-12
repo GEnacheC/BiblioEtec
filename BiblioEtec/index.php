@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?<?=filemtime("style.css")?>">
 </head>
 <body>
     <header>
@@ -14,13 +14,13 @@
     </header> 
    <section class="menu">
         <div class="card">
-            <a href="regAluno.php" class="btn-link blue">Registro de alunos</a>
-            <a href="regLivros.php" class="btn-link blue">Registro de livros</a>
-            <a href="empreLivros.php" class="btn-link blue">Empréstimo de livros</a>
+            <a href="regAluno.php" class="btn-link btn">Registro de alunos</a>
+            <a href="regLivros.php" class="btn-link btn">Registro de livros</a>
+            <a href="empreLivros.php" class="btn-link btn">Empréstimo de livros</a>
         </div>
    </section>
 </body>
-<script src="scripts.js"></script>
+<script src="script.js?<?=filemtime("script.js")?>"></script>
 
 
 <?php 
@@ -28,7 +28,7 @@
 
 $_SESSION["Search"] = False;
 $_SESSION["SearchLi"] = False;
-$_SESSION["SearchL"] = False;
+$_SESSION["SearchEmp"] = False;
 
 $con = new mysqli("127.0.0.1:3306", "root", "", "biblioteca"); 
 $sql = "select * from livrosempre"; 

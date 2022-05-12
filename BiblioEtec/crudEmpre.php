@@ -11,7 +11,7 @@
     $returnRm = $_POST["returnRm"];
     
     
-
+    echo($act);
 
     $search = $_POST["search"];
     
@@ -110,16 +110,24 @@
         // $res = $con->query($sql); 
         
         $_SESSION["NomeLivro"] =  $search; 
-
-        $_SESSION["SearchL"] = True;
+        // echo($_SESSION["NomeLivro"].' ');
+        // $sql = "select * from livrosempre where nameLivro like '%$search%' ";
+        // $res = $con->query($sql); 
+        // echo( $res->fetch_assoc()["nameLivro"]);
+        $_SESSION["SearchEmp"] = True;
         
         header("location: ".$_SERVER['HTTP_REFERER']);
+       
     }
+    else{
+        $_SESSION["SearchEmp"] = False;
+        header("location: ".$_SERVER['HTTP_REFERER']);
+        }
     if($act == 'rw'){
         $renewName = $_POST["bookNameRenew"];
         $renewDate = $_POST["dateRenew"];
-        echo($renewDate.' ');
-        echo($renewName);
+        // echo($renewDate.' ');
+        // echo($renewName);
         
 
         
@@ -130,10 +138,7 @@
         header("location: ".$_SERVER['HTTP_REFERER']);
         
 }
-    else{
-    $_SESSION["SearchL"] = False;
-    header("location: ".$_SERVER['HTTP_REFERER']);
-    }
+   
 
   
 ?>

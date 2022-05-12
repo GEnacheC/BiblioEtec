@@ -6,30 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empréstimo de livros</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?<?=filemtime("style.css")?>">
 </head>
 <body>
     
-   <section class="formEmp">
+   <section class="formLayout">
         <div class="card">
             
 
         <button onclick="closeForm()" class="reds close">X</button>
-            <form id="formRegAluno" method="post" action="crudEmpre.php">
-                <h1 style="color:#000">Registrar empréstimo</h1>
-                <label style="color:#000">RM do aluno:</label><input  name="RM" required="required" 
+            <form  method="post" action="crudEmpre.php">
+                <h1 >Registrar empréstimo</h1>
+                <label >RM do aluno:</label><input  name="RM" required="required" 
             
                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/><br>
-                <label style="color:#000">Cod. do livro:</label><input name="cod" required="required" 
+                <label >Cod. do livro:</label><input name="cod" required="required" 
                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/><br>
                 <br>
    
                
-                <label style="color:#000">Data do empréstimo:</label>
+                <label >Data do empréstimo:</label>
                 <input type="date" name="dateEmp" id="" required="required">
                 <br>
                 <br>
-                <label style="color:#000">Data de devolução:</label>
+                <label >Data de devolução:</label>
                 <input type="date" name="dateDev" id="" required="required" />
         
                 
@@ -46,13 +46,13 @@
         </div>
    </section>
 
-   <section class="formDeleteEmp">
+   <section class="formLayout">
         
         <div class="card">
             <button onclick="closeForm()" class="reds close">X</button>
-            <form id="formRegAluno" method="post" action="crudEmpre.php">
+            <form  method="post" action="crudEmpre.php">
                 
-                <h1 style="color:#000">Apagar empréstimo</h1>
+                <h1 >Apagar empréstimo</h1>
                 <input name="deleteByName" placeholder="Digite um nome" required="required" />
                 <button onclick="submitForm('dEm');" class="reds downButton">Deletar</button>
                 
@@ -62,13 +62,13 @@
         
     </section>
 
-    <section class="formReturn">
+    <section class="formLayout">
         
         <div class="card">
             <button onclick="closeForm()" class="reds close">X</button>
-            <form id="formRegAluno" method="post" action="crudEmpre.php">
+            <form  method="post" action="crudEmpre.php">
                 
-                <h1 style="color:#000">Devolver</h1>
+                <h1 >Devolver</h1>
                 <input name="returnBook" placeholder="Digite o código do livro" required="required"
                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
                 <br>
@@ -85,16 +85,16 @@
     </section>
 
 
-    <section id="formRenew" class="formRenew">
+    <section id="formRenew" class="formLayout">
         
         <div class="card">
             <button onclick="closeForm()" class="reds close">X</button>
-            <form id="formRegAluno" method="post" action="crudEmpre.php">
+            <form  method="post" action="crudEmpre.php">
                 
-                <h1 style="color:#000">Renovar Empréstimo</h1>
+                <h1 >Renovar Empréstimo</h1>
               
                 <br>
-                <label style="color:#000">Data de devolução:</label>
+                <label >Data de devolução:</label>
                 <input type="date" name="dateRenew" id="" required="required" />
                 
                 <button class="purple downButton">Renovar</button>
@@ -109,16 +109,16 @@
     <header>
         
         
-        <a href="index.php" class="btn-link green btn-home"><</a>
+        <a href="index.php" class="btn-link btn btn-home"><</a>
         <h1>Empréstimo de livros</h1>
     
-        <button onclick="addAluno()">Registrar empréstimo</button>
-        <button onclick="returnBook()" class="purple">Devolver livro</button>
-        <button onclick="deleteAluno()" class="reds">Apagar empréstimo</button>
+        <button onclick="addAluno()" class="btn">Registrar empréstimo</button>
+        <button onclick="returnBook()" class="btn">Devolver livro</button>
+        <button onclick="deleteAluno()" class="btn">Apagar empréstimo</button>
         
     </header> 
 
-    <form id="formRegAluno" method="post" action="crudEmpre.php" class="formSearch">
+    <form  method="post" action="crudEmpre.php" class="formSearch">
                 
                 
                 <label>Pesquisar:</label><input name="search" class="inpt" placeholder="Digite o nome do livro" />
@@ -129,7 +129,7 @@
 </body>
 
 
-<script src="script.js"></script>
+<script src="script.js?<?=filemtime("script.js")?>"></script>
 
 <script>
 const submitForm = (typeSubmit) =>{ 
@@ -147,14 +147,15 @@ const callFormRenew = (whatBook) =>{
 
 
 <?php 
-
-
-
-
 $con = new mysqli("127.0.0.1:3306", "root", "", "biblioteca"); 
 
 
-if($_SESSION["SearchL"] == True){
+
+
+
+
+
+if($_SESSION["SearchEmp"] == True ){
  
 
     $nameLivro = $_SESSION["NomeLivro"];
@@ -163,6 +164,8 @@ if($_SESSION["SearchL"] == True){
     $res = $con->query($sql); 
     echo("<div class='tableCard'>");
     echo("<table>"); 
+    echo("<h1 style='color:rgb(0, 192, 0)'>Resultados encontrados</h1>");
+    echo("<br>");
     echo("<tr><th>Nome do aluno</th><th>Série</th><th>Curso</th><th>Email</th><th>Telefone</th><th>Nome do livro</th><th>Data de empréstimo</th><th>Data de devolução</th> <th>Dias para devolução</th><th>Status</th></tr>");
     while($campo = $res->fetch_assoc()){ 
    
@@ -173,6 +176,7 @@ if($_SESSION["SearchL"] == True){
 
         echo(mysqli_error($con));
         echo("<tr>");
+       
         echo("<td>".$campo["nameAluno"]."</td>"); 
         echo("<td>".$campo["serie"]."</td>"); 
         echo("<td>".$campo["curso"]."</td>"); 
@@ -191,7 +195,14 @@ if($_SESSION["SearchL"] == True){
         else{
             echo("<td style='color:rgb(0, 192, 0)'>".$intervalDays."</td>"); 
         }
-        echo("<td>".$campo["status"]."</td>");
+        if($campo["status"]== 'Na biblioteca'){
+            echo("<td style='color:rgb(0, 192, 0)'>".$campo["status"]."</td>");
+        }
+        else{
+            echo("<td style='color:red'>".$campo["status"]."</td>");
+        }
+       
+        echo("<td> <button onclick='callFormRenew(this.id)' class='btn blue' id='".$campo["nameLivro"]." '>Renovar</button></td>"); 
         echo("</tr>");
     }
     echo("</table>"); 
